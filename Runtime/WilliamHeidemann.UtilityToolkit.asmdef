@@ -1,0 +1,14 @@
+﻿{
+  "name": "WilliamHeidemann.UtilityToolkit",
+  "version": "1.0.0",
+  "displayName": "Utility Toolkit",
+  "description": "Utility package for programmers by William Heidemann",
+  "unity": "6000",
+  "unityRelease": "0b5",
+  "author": {
+    "name": "William Skou Heidemann",
+    "email": "williamskou2227@gmail.com",
+    "url": "https://game-dev-blog-xi.vercel.app"
+  },
+  "license": "MIT"
+}
