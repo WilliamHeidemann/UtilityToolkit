@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "displayName": "Utility Toolkit",
   "description": "Utility package often useful in game development by William Heidemann",
-  "unity": "6000",
+  "unity": "2020.3",
   "unityRelease": "0b5",
   "author": {
     "name": "William Skou Heidemann",
