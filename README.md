@@ -7,8 +7,8 @@ and data structures to simplify common tasks.
 - [Collection Extension Methods](#collection-extension-methods)
 - [Data Structure Conversion Methods](#data-structure-conversion-methods)
 - [Data Wrappers](#data-wrappers)
-    - [Observable<T>](#observablet)
-    - [Option<T>](#optiont)
+    - [Observable<T>](#observable)
+    - [Option<T>](#option)
 - [Short Hand For-Loops](#short-hand-for-loops)
 
 <br>
@@ -54,7 +54,7 @@ the variable no longer has to know about all the components that
 depend on the variable. 
 
 ```csharp
-class Observable<T>
+class Observable
 {
     public Observable(T initialValue = default);
     public T Value;
@@ -74,7 +74,7 @@ This code will print out the new value to the console when it changes.
 
 <br>
 
-### Option<T>
+### Option
 
 This struct is used to store or return optional values. The main purpose of
 this is to avoid null-pointer exceptions by forcing the programmer to verify
