@@ -8,10 +8,22 @@ namespace UtilityToolkit.Runtime
     {
         public static T RandomElement<T>(this IEnumerable<T> enumerable)
         {
-            var list = enumerable.ToArray();
+            var array = enumerable.ToArray();
+            return RandomElement(array);
+        }
+        
+        public static T RandomElement<T>(this IList<T> list)
+        {
             var random = new Random();
-            var index = random.Next(list.Length);
+            var index = random.Next(list.Count);
             return list[index];
+        }
+        
+        public static T RandomElement<T>(this T[] array)
+        {
+            var random = new Random();
+            var index = random.Next(array.Length);
+            return array[index];
         }
 
         public static IList<T> Shuffle<T>(this IList<T> list)
