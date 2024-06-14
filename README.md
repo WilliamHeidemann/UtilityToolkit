@@ -3,6 +3,15 @@
 Utility Toolkit is a C# library that provides algorithms 
 and data structures to simplify common tasks.
 
+## Table of Contents
+- [Collection Extension Methods](#collection-extension-methods)
+- [Data Structure Conversion Methods](#data-structure-conversion-methods)
+- [Data Wrappers](#data-wrappers)
+    - [Observable<T>](#observablet)
+    - [Option<T>](#optiont)
+- [Short Hand For-Loops](#short-hand-for-loops)
+
+
 ## Collection Extension Methods
 
 Query a random element from an IEnumerable.  
