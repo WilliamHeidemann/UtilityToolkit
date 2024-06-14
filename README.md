@@ -4,31 +4,14 @@ Utility Toolkit is a C# library that provides algorithms
 and data structures to simplify common tasks.
 
 ## Table of Contents
-- [Collection Extension Methods](#collection-extension-methods)
 - [Data Structure Conversion Methods](#data-structure-conversion-methods)
+- [Collection Extension Methods](#collection-extension-methods)
 - [Data Wrappers](#data-wrappers)
     - [Observable<T>](#observable)
     - [Option<T>](#option)
 - [Short Hand For-Loops](#short-hand-for-loops)
 
 <br>
-
-## Collection Extension Methods
-
-Query a random element from an IEnumerable.  
-Time complexity: O(N)
-
-```csharp
-T RandomElement<T>(this IEnumerable<T> enumerable);
-```
-
-Shuffle the order of an IList or IEnumerable.  
-Time complexity: O(N)
-
-```csharp
-IList<T> Shuffle<T>(this IList<T> list);
-IEnumerable<T> Shuffle<T>(this IEnumerable<T> enumerable);
-```
 
 ## Data Structure Conversion Methods
 
@@ -38,6 +21,31 @@ Time complexity: O(N)
 ```csharp
 Stack<T> ToStack<T>(this IEnumerable<T> enumerable);
 Queue<T> ToQueue<T>(this IEnumerable<T> enumerable);
+```
+
+
+## Collection Extension Methods
+
+Shuffle the order of an IList or IEnumerable.  
+Time complexity: O(N)
+
+```csharp
+IList<T> Shuffle<T>(this IList<T> list);
+IEnumerable<T> Shuffle<T>(this IEnumerable<T> enumerable);
+```
+
+Query a random element from an IEnumerable.  
+Time complexity: O(1)
+
+```csharp
+T RandomElement<T>(this IList<T> list);
+T RandomElement<T>(this T[] array);
+```
+
+Time complexity: O(N)
+
+```csharp
+T RandomElement<T>(this IEnumerable<T> enumerable);
 ```
 
 ## Data Wrappers
