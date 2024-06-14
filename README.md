@@ -11,6 +11,7 @@ and data structures to simplify common tasks.
     - [Option<T>](#optiont)
 - [Short Hand For-Loops](#short-hand-for-loops)
 
+<br>
 
 ## Collection Extension Methods
 
