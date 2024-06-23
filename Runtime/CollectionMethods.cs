@@ -11,14 +11,14 @@ namespace UtilityToolkit.Runtime
             var array = enumerable.ToArray();
             return RandomElement(array);
         }
-        
+
         public static T RandomElement<T>(this IList<T> list)
         {
             var random = new Random();
             var index = random.Next(list.Count);
             return list[index];
         }
-        
+
         public static T RandomElement<T>(this T[] array)
         {
             var random = new Random();
@@ -34,6 +34,7 @@ namespace UtilityToolkit.Runtime
                 int j = random.Next(i + 1);
                 (list[i], list[j]) = (list[j], list[i]);
             }
+
             return list;
         }
 
@@ -41,6 +42,27 @@ namespace UtilityToolkit.Runtime
         {
             var list = enumerable.ToList();
             return list.Shuffle();
+        }
+
+        public static Option<T> FirstOption<T>(this IEnumerable<T> enumerable)
+        {
+            foreach (var t in enumerable)
+            {
+                return Option<T>.Some(t);
+            }
+
+            return Option<T>.None;
+        }
+
+        public static Option<T> FirstOption<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
+        {
+            foreach (var t in enumerable)
+            {
+                if (predicate(t)) 
+                    return Option<T>.Some(t);
+            }
+
+            return Option<T>.None;
         }
     }
 }
