@@ -58,11 +58,40 @@ namespace UtilityToolkit.Runtime
         {
             foreach (var t in enumerable)
             {
-                if (predicate(t)) 
+                if (predicate(t))
                     return Option<T>.Some(t);
             }
 
             return Option<T>.None;
+        }
+
+        public static Option<T> LastOption<T>(this IEnumerable<T> enumerable)
+        {
+            var found = false;
+            T last = default;
+            foreach (var t in enumerable)
+            {
+                found = true;
+                last = t;
+            }
+
+            return found ? Option<T>.Some(last) : Option<T>.None;
+        }
+
+        public static Option<T> LastOption<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
+        {
+            var found = false;
+            T last = default;
+            foreach (var t in enumerable)
+            {
+                if (predicate(t))
+                {
+                    found = true;
+                    last = t;
+                }
+            }
+
+            return found ? Option<T>.Some(last) : Option<T>.None;
         }
     }
 }
