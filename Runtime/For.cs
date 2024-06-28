@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace UtilityToolkit.Runtime
 {
@@ -11,7 +12,7 @@ namespace UtilityToolkit.Runtime
                 action();
             }
         }
-        
+
         public static void Range(int i, Action<int> action)
         {
             for (int j = 0; j < i; j++)
@@ -29,6 +30,11 @@ namespace UtilityToolkit.Runtime
                     action(k, l);
                 }
             }
+        }
+
+        public static T[] GetValues<T>() where T : Enum
+        {
+            return Enum.GetValues(typeof(T)) as T[];
         }
     }
 }
