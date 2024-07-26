@@ -37,7 +37,7 @@ namespace UtilityToolkit.Runtime
             return Enum.GetValues(typeof(T)) as T[];
         }
 
-        public static void Each<T>(Action<T> action) where T : Enum
+        public static void EachEnum<T>(Action<T> action) where T : Enum
         {
             foreach (var t in GetValues<T>())
             {
