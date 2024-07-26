@@ -1,0 +1,25 @@
+UtilityToolkit:
+https://github.com/WilliamHeidemann/UtilityToolkit.git
+
+Unity-Utils:
+https://github.com/adammyhre/Unity-Utils.git
+
+LeanTween:
+Package Manager -> My Assets -> Search "LeanTween"
+https://assetstore.unity.com/packages/tools/animation/leantween-3595
+
+Canvas settings:
+Render Mode -> Screen Space - Overlay
+UI Scale Mode -> Scale With Screen Size
+
+Assembly definition: 
+Create a new assembly definition. 
+Reference 
+	- UtilityToolkit
+	- UnityUtils
+	- Unity.TextMeshPro
+Click apply
+
+To make a WebGL build: 
+Project settings -> Player -> Publishing Settings -> 
+Compression Format -> from brotli to disabled
