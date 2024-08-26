@@ -20,6 +20,9 @@ Canvas settings:
 Render Mode -> Screen Space - Overlay
 UI Scale Mode -> Scale With Screen Size
 
+Netcode for GameObjects:
+Package Manager -> add package by name -> copy and paste com.unity.netcode.gameobjects
+
 Assembly definition: 
 Create a new assembly definition. 
 Reference 
