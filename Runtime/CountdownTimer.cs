@@ -7,7 +7,9 @@ namespace UtilityToolkit.Runtime
         public bool IsFinished => timeOfCreation + timeToFinish < Time.time;
         public float FractionDone => (Time.time - timeOfCreation) / timeToFinish;
         private readonly float timeToFinish;
-        private readonly float timeOfCreation = Time.time;
+        private float timeOfCreation = Time.time;
+
+        public void Reset() => timeOfCreation = Time.time;
 
         public CountdownTimer(float timeToFinish)
         {
