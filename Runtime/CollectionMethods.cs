@@ -26,24 +26,6 @@ namespace UtilityToolkit.Runtime
             return array[index];
         }
 
-        public static IList<T> Shuffle<T>(this IList<T> list)
-        {
-            var random = new Random();
-            for (int i = list.Count - 1; i > 0; i--)
-            {
-                int j = random.Next(i + 1);
-                (list[i], list[j]) = (list[j], list[i]);
-            }
-
-            return list;
-        }
-
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> enumerable)
-        {
-            var list = enumerable.ToList();
-            return list.Shuffle();
-        }
-
         public static Option<T> FirstOption<T>(this IEnumerable<T> enumerable)
         {
             foreach (var t in enumerable)
