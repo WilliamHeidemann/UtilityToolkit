@@ -1,19 +1,25 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace UtilityToolkit.Runtime
 {
     public class CountdownTimer
     {
-        public bool IsFinished => timeOfCreation + timeToFinish < Time.time;
-        public float FractionDone => (Time.time - timeOfCreation) / timeToFinish;
-        private readonly float timeToFinish;
-        private float timeOfCreation = Time.time;
 
-        public void Reset() => timeOfCreation = Time.time;
+        public bool IsFinished => TimeOfCompletion < Time.time;
+        public float FractionDone => SecondsPassed / _secondsToFinish;
+        public float SecondsPassed => Time.time - _timeOfCreation;
+        public float SecondsLeft => TimeOfCompletion - Time.time;
+        public float TimeOfCompletion => _timeOfCreation + _secondsToFinish;
 
-        public CountdownTimer(float timeToFinish)
+        private readonly float _secondsToFinish;
+        private float _timeOfCreation = Time.time;
+
+        public void Reset() => _timeOfCreation = Time.time;
+
+        public CountdownTimer(float secondsToFinish)
         {
-            this.timeToFinish = timeToFinish;
+            _secondsToFinish = secondsToFinish;
         }
     }
 }
