@@ -7,10 +7,13 @@ and data structures to simplify common tasks.
 - [Data Wrappers](#data-wrappers)
   - [Observable<T>](#observable)
   - [Option<T>](#option)
-- [Data Structure Conversion Methods](#data-structure-conversion-methods)
-- [Collection Extension Methods](#collection-extension-methods)
-- [Short Hand For-Loops](#short-hand-for-loops)
-
+- [Countdown Timer](#countdown-timer)
+- [IEnumerable to Stack](#ienumerable-to-stack)
+- [IEnumerable to Queue](#ienumerable-to-queue)
+- [Get Enum Values](#get-enum-values)
+- [Random Element](#random-element)
+- [Set Alpha](#set-alpha)
+- [First Option](#first-option)
 
 ## Data Wrappers
 
