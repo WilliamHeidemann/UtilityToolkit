@@ -14,7 +14,7 @@ and data structures to simplify common tasks.
 
 ## Data Wrappers
 
-### Observable
+### Observable\<T\>
 
 The Observable<T> class is used for reactive programming, where
 the change of a variable ripples down to affect many other components
@@ -46,7 +46,7 @@ This code will print out the new value to the console when it changes.
 
 <br>
 
-### Option
+### Option \<T\>
 
 This struct is used to store or return optional values. The main purpose of
 this is to avoid null-pointer exceptions by forcing the programmer to verify
@@ -87,29 +87,51 @@ public void Loot(Enemy enemy)
     }
 }
 ```
+## Countdown Timer
+The CountdownTimer class is a lightweight object for managing time. 
+It has a number of read-only properties as well as a method to reset the timer.
 
-<br>
+```csharp
+class CountdownTimer
+{
+    // Constructor
+    public CountdownTimer(float secondsToFinish);
+    
+    // Public Properties
+    public bool IsFinished => { ... }
+    public float FractionDone => { ... }
+    public float SecondsPassed => { ... }
+    public float SecondsLeft => { ... }
+    public float TimeOfCompletion => { ... }
+    
+    // Methods
+    public void Reset();
+}
+```
 
-## Data Structure Conversion Methods
+## IEnumerable to Stack
 
-Convert from an IEnumerable to a Stack<T> or Queue<T>.  
+Convert from an IEnumerable to a Stack<T>.  
 Time complexity: O(N)
 
 ```csharp
 Stack<T> ToStack<T>(this IEnumerable<T> enumerable);
+```
+
+Convert from an IEnumerable to a Queue<T>.  
+Time complexity: O(N)
+## IEnumerable to Queue
+```csharp
 Queue<T> ToQueue<T>(this IEnumerable<T> enumerable);
 ```
 
-
-## Collection Extension Methods
-
-Shuffle the order of an IList or IEnumerable.  
-Time complexity: O(N)
-
+## Get Enum Values
+This method returns all values an enum may evaluate to.
 ```csharp
-IList<T> Shuffle<T>(this IList<T> list);
-IEnumerable<T> Shuffle<T>(this IEnumerable<T> enumerable);
+public static T[] GetValues<T>() where T : Enum
 ```
+
+## Random Element
 
 Query a random element from an IEnumerable.  
 Time complexity: O(1)
@@ -124,6 +146,15 @@ Time complexity: O(N)
 ```csharp
 T RandomElement<T>(this IEnumerable<T> enumerable);
 ```
+
+## Set Alpha
+Change the alpha value of a Color instance.
+```csharp
+public static Color SetAlpha(this Color color, float alpha);
+```
+
+
+## First Option
 
 When querying for the first element of a sequence, 
 or the first element that satisfies some condition, 
