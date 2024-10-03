@@ -34,3 +34,5 @@ Click apply
 To make a WebGL build: 
 Project settings -> Player -> Publishing Settings -> 
 Compression Format -> from brotli to disabled
+
+Great setup guide: https://codesmile.de/2024/07/23/2-project-setup-write-better-netcode/
