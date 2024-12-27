@@ -23,6 +23,8 @@ namespace UtilityToolkit.Runtime
         {
             _value = initialValue;
         }
+        
+        public static implicit operator Observable<T>(T value) => new(value);
 
         public static T operator +(Observable<T> a, T b)
         {
