@@ -28,21 +28,21 @@ namespace UtilityToolkit.Runtime
 
         public static T operator +(Observable<T> a, T b)
         {
-            if (a.Value is int i && b is int j)
+            if (a.Value is int i && b is int iValue)
             {
-                a.Value = (T)Convert.ChangeType(i + j, typeof(T));
+                a.Value = (T)Convert.ChangeType(i + iValue, typeof(T));
                 return a.Value;
             }
 
-            if (a.Value is float f && b is float g)
+            if (a.Value is float f && b is float fValue)
             {
-                a.Value = (T)Convert.ChangeType(f + g, typeof(T));
+                a.Value = (T)Convert.ChangeType(f + fValue, typeof(T));
                 return a.Value;
             }
-
-            if (a.Value is Percent p && b is float fValue)
+            
+            if (a.Value is Percent p && b is Percent pValue)
             {
-                a.Value = (T)Convert.ChangeType(p + fValue, typeof(T));
+                a.Value = (T)Convert.ChangeType(p + pValue, typeof(T));
                 return a.Value;
             }
             
@@ -52,21 +52,21 @@ namespace UtilityToolkit.Runtime
 
         public static T operator -(Observable<T> a, T b)
         {
-            if (a.Value is int i && b is int j)
+            if (a.Value is int i && b is int iValue)
             {
-                a.Value = (T)Convert.ChangeType(i - j, typeof(T));
+                a.Value = (T)Convert.ChangeType(i - iValue, typeof(T));
                 return a.Value;
             }
 
-            if (a.Value is float f && b is float g)
+            if (a.Value is float f && b is float fValue)
             {
-                a.Value = (T)Convert.ChangeType(f - g, typeof(T));
+                a.Value = (T)Convert.ChangeType(f - fValue, typeof(T));
                 return a.Value;
             }
             
-            if (a.Value is Percent p && b is float fValue)
+            if (a.Value is Percent p && b is Percent pValue)
             {
-                a.Value = (T)Convert.ChangeType(p - fValue, typeof(T));
+                a.Value = (T)Convert.ChangeType(p - pValue, typeof(T));
                 return a.Value;
             }
 
