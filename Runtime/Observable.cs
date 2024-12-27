@@ -26,52 +26,52 @@ namespace UtilityToolkit.Runtime
         
         public static implicit operator Observable<T>(T value) => new(value);
 
-        public static T operator +(Observable<T> a, T b)
+        public static Observable<T> operator +(Observable<T> a, T b)
         {
             if (a.Value is int i && b is int iValue)
             {
                 a.Value = (T)Convert.ChangeType(i + iValue, typeof(T));
-                return a.Value;
+                return a;
             }
 
             if (a.Value is float f && b is float fValue)
             {
                 a.Value = (T)Convert.ChangeType(f + fValue, typeof(T));
-                return a.Value;
+                return a;
             }
             
             if (a.Value is Percent p && b is Percent pValue)
             {
                 a.Value = (T)Convert.ChangeType(p + pValue, typeof(T));
-                return a.Value;
+                return a;
             }
             
             Debug.LogWarning($"+ operator not supported in {typeof(T)}. Value not changed");
-            return a.Value;
+            return a;
         }
 
-        public static T operator -(Observable<T> a, T b)
+        public static Observable<T> operator -(Observable<T> a, T b)
         {
             if (a.Value is int i && b is int iValue)
             {
                 a.Value = (T)Convert.ChangeType(i - iValue, typeof(T));
-                return a.Value;
+                return a;
             }
 
             if (a.Value is float f && b is float fValue)
             {
                 a.Value = (T)Convert.ChangeType(f - fValue, typeof(T));
-                return a.Value;
+                return a;
             }
             
             if (a.Value is Percent p && b is Percent pValue)
             {
                 a.Value = (T)Convert.ChangeType(p - pValue, typeof(T));
-                return a.Value;
+                return a;
             }
 
             Debug.LogWarning($"- operator not supported in {typeof(T)}. Value not changed");
-            return a.Value;
+            return a;
         }
     }
 }
