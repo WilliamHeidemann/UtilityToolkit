@@ -22,9 +22,9 @@ namespace UtilityToolkit.Runtime
             return _isSome;
         }
 
-        public TResult Match<TResult>(Func<T, TResult> some, Func<TResult> none)
+        public TResult Match<TResult>(Func<T, TResult> some, TResult none)
         {
-            return IsSome(out T value) ? some(value) : none();
+            return IsSome(out T value) ? some(value) : none;
         }
 
         public T MatchDefault()
