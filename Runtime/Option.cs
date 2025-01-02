@@ -1,4 +1,6 @@
-﻿namespace UtilityToolkit.Runtime
+﻿using System;
+
+namespace UtilityToolkit.Runtime
 {
     public readonly struct Option<T>
     {
@@ -18,6 +20,16 @@
         {
             value = _value;
             return _isSome;
+        }
+
+        public TResult Match<TResult>(Func<T, TResult> some, Func<TResult> none)
+        {
+            return IsSome(out T value) ? some(value) : none();
+        }
+
+        public T MatchDefault()
+        {
+            return IsSome(out T value) ? value : default;
         }
     }
 }
