@@ -16,6 +16,7 @@ namespace UtilityToolkit.Runtime
         private float _timeOfCreation = Time.time;
 
         public void Reset() => _timeOfCreation = Time.time;
+        public void AddTime(float secondsToAdd) => _timeOfCreation += secondsToAdd;
 
         public CountdownTimer(float secondsToFinish)
         {
