@@ -109,6 +109,7 @@ class CountdownTimer
     
     // Methods
     public void Reset();
+    public void AddTime(float secondsToAdd) => { ... }
 }
 ```
 
