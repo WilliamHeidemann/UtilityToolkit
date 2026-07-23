@@ -1,5 +1,7 @@
 using System.Collections.Generic;
-using UnityEditor;
+using UtilityToolkit.CollectionExtensions;
+using UtilityToolkit.Monads;
+using UtilityToolkit.Structures;
 
 namespace UtilityToolkit.Tests
 {
@@ -14,6 +16,7 @@ namespace UtilityToolkit.Tests
             {
                 collection.Add("Item " + i, 1);
             }
+
             var counts = new Dictionary<string, int>();
 
             // Act
@@ -24,6 +27,7 @@ namespace UtilityToolkit.Tests
                 {
                     counts[item] = 0;
                 }
+
                 counts[item]++;
             }
 
@@ -31,10 +35,11 @@ namespace UtilityToolkit.Tests
             foreach (var kvp in counts)
             {
                 UnityEngine.Debug.Log($"{kvp.Key}: {kvp.Value}");
-                NUnit.Framework.Assert.IsTrue(kvp.Value is > 800 and < 1200, $"{kvp.Key} count {kvp.Value} is out of expected range.");
+                NUnit.Framework.Assert.IsTrue(kvp.Value is > 800 and < 1200,
+                    $"{kvp.Key} count {kvp.Value} is out of expected range.");
             }
         }
-        
+
         [NUnit.Framework.Test]
         public void WeightedCollectionWithSkewedProbabilityRespectsWeights()
         {
@@ -52,13 +57,16 @@ namespace UtilityToolkit.Tests
                 {
                     counts[item] = 0;
                 }
+
                 counts[item]++;
             }
 
             // Assert
             UnityEngine.Debug.Log($"Common Item: {counts.GetValueOrDefault("Common Item", 0)}");
             UnityEngine.Debug.Log($"Rare Item: {counts.GetValueOrDefault("Rare Item", 0)}");
-            NUnit.Framework.Assert.IsTrue(counts.GetValueOrDefault("Common Item", 0) > counts.GetValueOrDefault("Rare Item", 0) * 5, "Common item was not selected significantly more often than rare item.");
+            NUnit.Framework.Assert.IsTrue(
+                counts.GetValueOrDefault("Common Item", 0) > counts.GetValueOrDefault("Rare Item", 0) * 5,
+                "Common item was not selected significantly more often than rare item.");
         }
     }
 }
