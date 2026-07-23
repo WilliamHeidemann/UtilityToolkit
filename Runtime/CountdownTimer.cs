@@ -1,59 +1,64 @@
 ﻿using System;
-using UnityEngine;
 
-namespace UtilityToolkit.Runtime
+public class CountdownTimer
 {
-    public class CountdownTimer
+    public event Action OnTimerEnded;
+
+    public float SecondsToFinish { get; private set; }
+    public float SecondsPassed { get; private set; }
+    public float SecondsLeft => Math.Max(0f, SecondsToFinish - SecondsPassed);
+    public float FractionDone => SecondsToFinish > 0f ? Math.Clamp(SecondsPassed / SecondsToFinish, 0f, 1f) : 1f;
+
+    public bool IsFinished => SecondsPassed >= SecondsToFinish;
+    public bool IsPaused { get; private set; }
+
+    private bool _hasEnded;
+
+    public CountdownTimer(float secondsToFinish)
     {
-        public event Action OnTimerEnded;
-        private float CurrentTime => IsPaused ? _timeAtPause : Time.time;
-        public bool IsFinished => TimeOfCompletion < CurrentTime;
-        public float FractionDone => SecondsPassed / _secondsToFinish;
-        public float SecondsPassed => CurrentTime - _timeOfCreation;
-        public float SecondsLeft => Mathf.Max(0, TimeOfCompletion - CurrentTime);
-        public float TimeOfCompletion => _timeOfCreation + _secondsToFinish;
-        public bool IsPaused { get; private set; }
+        SecondsToFinish = secondsToFinish;
+    }
 
-        private float _secondsToFinish;
-        private float _timeOfCreation = Time.time;
-        private float _timeAtPause;
-        private bool _hasEnded;
+    /// <summary>
+    /// Advances the timer forward by deltaTime seconds.
+    /// Call this from your update loop (e.g., Tick(Time.deltaTime)).
+    /// </summary>
+    public void Tick(float deltaTime)
+    {
+        if (IsPaused || _hasEnded) return;
 
-        public void Reset()
+        SecondsPassed += deltaTime;
+
+        if (IsFinished)
         {
-            _timeOfCreation = Time.time;
-            _hasEnded = false;
-            IsPaused = false;
+            _hasEnded = true;
+            OnTimerEnded?.Invoke();
         }
+    }
 
-        public void AddTime(float secondsToAdd) => _timeOfCreation += secondsToAdd;
+    public void Pause() => IsPaused = true;
 
-        public void Pause()
-        {
-            if (IsPaused) return;
-            _timeAtPause = Time.time;
-            IsPaused = true;
-        }
-        
-        public void Resume()
-        {
-            if (!IsPaused) return;
-            _secondsToFinish += Time.time - _timeAtPause;
-            IsPaused = false;
-        }
+    public void Resume() => IsPaused = false;
 
-        public void Tick()
-        {
-            if (!_hasEnded && IsFinished)
-            {
-                _hasEnded = true;
-                OnTimerEnded?.Invoke();
-            }
-        }
+    public void Reset()
+    {
+        SecondsPassed = 0f;
+        _hasEnded = false;
+        IsPaused = false;
+    }
 
-        public CountdownTimer(float secondsToFinish)
-        {
-            _secondsToFinish = secondsToFinish;
-        }
+    public void Reset(float newSecondsToFinish)
+    {
+        SecondsToFinish = newSecondsToFinish;
+        Reset();
+    }
+
+    /// <summary>
+    /// Adds or subtracts time needed to finish. 
+    /// Positive values push completion further away; negative values speed it up.
+    /// </summary>
+    public void AddTime(float secondsToAdd)
+    {
+        SecondsToFinish += secondsToAdd;
     }
 }
