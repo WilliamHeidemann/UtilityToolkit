@@ -4,26 +4,38 @@ namespace UtilityToolkit.Structures
     {
         private readonly T[] _items;
         private int _headIndex;
+        private int _length;
     
         public T Head => _items[_headIndex];
-        public int Length => _items.Length;
+        public int Length => _length;
     
         public CircularArray(T head, T[] tail)
         {
-            _items = new T[tail.Length + 1];
+            _length = 1 + tail.Length;
+            _items = new T[_length];
             _items[0] = head;
             tail.CopyTo(_items, 1);
         }
 
         public T MoveRight()
         {
-            _headIndex = (_headIndex + 1) % Length;
+            _headIndex++;
+            if (_headIndex == _length)
+            {
+                _headIndex = 0;
+            }
+            
             return _items[_headIndex];
         }
 
         public T MoveLeft()
         {
-            _headIndex = (_headIndex - 1 + Length) % Length;
+            _headIndex--;
+            if (_headIndex < 0)
+            {
+                _headIndex = _length - 1;
+            }
+            
             return _items[_headIndex];
         }
     }
