@@ -34,6 +34,13 @@ namespace UtilityToolkit.Monads
                 : Option<TResult>.None;
         }
 
+        public Option<TResult> FlatSelect<TResult>(Func<T, Option<TResult>> selector)
+        {
+            return IsSome(out T value)
+                ? selector(value)
+                : Option<TResult>.None;
+        }
+
         public TResult SelectOrDefault<TResult>(Func<T, TResult> selector, TResult defaultValue = default)
         {
             return IsSome(out T value) ? selector(value) : defaultValue;
